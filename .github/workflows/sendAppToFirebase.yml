@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-java@v1
         with: { java-version: 1.17 }
       - name: Build and sent app to fb
-        run: ./gradlew appDistributionToFb
+        run: ./gradlew bundleDebug appDistributionUploadDebug --artifactType="APK"
 
       - name: Check status
         run: echo "Check build status and send status"
