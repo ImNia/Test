@@ -1,3 +1,5 @@
+import com.google.firebase.appdistribution.gradle.firebaseAppDistribution
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -29,6 +31,20 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+
+        getByName("release") {
+            firebaseAppDistribution {
+                artifactType = "APK"
+                releaseNotesFile = "/path/to/releasenotes.txt"
+            }
+        }
+
+        getByName("debug") {
+            firebaseAppDistribution {
+                artifactType = "APK"
+                releaseNotesFile = "/path/to/releasenotes.txt"
+            }
         }
     }
     compileOptions {
