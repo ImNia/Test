@@ -23,7 +23,7 @@ jobs:
           echo "$CREDENTIAL_FILE_CONTENT" > ./app/serviceCredentialsFile.json
           echo "App type: Debug" >> ./app/src/releaseNotes.txt
           echo "buildNumber=${GITHUB_RUN_NUMBER}" >> ./app/src/releaseNotes.txt
-          ./gradlew bundleDebug appDistributionUploadDebug
+          ./gradlew assembleRelease appDistributionUploadRelease
 
       - name: Check status
         run: echo "Check build status and send status"
