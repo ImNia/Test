@@ -33,18 +33,7 @@ android {
             )
         }
 
-        getByName("release") {
-            firebaseAppDistribution {
-                artifactType = "APK"
-                releaseNotesFile = "/path/to/releasenotes.txt"
-            }
-        }
-
         getByName("debug") {
-            firebaseAppDistribution {
-                artifactType = "APK"
-                releaseNotesFile = "/path/to/releasenotes.txt"
-            }
         }
     }
     compileOptions {
@@ -65,6 +54,11 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+}
+
+firebaseAppDistribution {
+    artifactType = "APK"
+    releaseNotesFile = "/app/src/releasenotes.txt"
 }
 
 task("appDistributionToFb") {
