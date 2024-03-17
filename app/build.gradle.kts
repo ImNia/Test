@@ -58,7 +58,7 @@ android {
 
 firebaseAppDistribution {
     artifactType = "APK"
-    releaseNotesFile = "/app/src/releasenotes.txt"
+    releaseNotesFile = "/app/src/releaseNotes.txt"
 }
 
 task("appDistributionToFb") {
