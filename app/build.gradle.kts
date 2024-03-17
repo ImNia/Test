@@ -57,6 +57,7 @@ android {
 }
 
 firebaseAppDistribution {
+    serviceCredentialsFile = "app/serviceCredentialsFile.json"
     artifactType = "APK"
     releaseNotesFile = "./app/src/releaseNotes.txt"
 }
