@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.googleServices)
+    alias(libs.plugins.firebaseDistribution)
 }
 
 android {
@@ -49,6 +51,11 @@ android {
     }
 }
 
+task("appDistributionToFb") {
+    dependsOn("bundleDebug")
+    dependsOn("appDistributionUploadDebug")
+}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -59,6 +66,9 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(platform("com.google.firebase:firebase-bom:32.7.4"))
+    implementation("com.google.firebase:firebase-analytics")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
