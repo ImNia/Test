@@ -33,9 +33,15 @@ android {
             )
 
             firebaseAppDistribution {
-                serviceCredentialsFile = "app/serviceCredentialsFile.json"
+                val serviceCredentialsPath: String =
+                    System.getenv("SERVICE_CREDENTIALS_PATH")
+                    ?: "app/serviceCredentialsFile.json"
+                val releaseNotesPath: String =
+                    System.getenv("RELEASE_NOTES_PATH")
+                        ?: "app/src/releaseNotes.txt"
+                serviceCredentialsFile = serviceCredentialsPath
                 artifactType = "APK"
-                releaseNotesFile = "app/src/releaseNotes.txt"
+                releaseNotesFile = releaseNotesPath
                 testers = ""
             }
         }
@@ -64,9 +70,15 @@ android {
 }
 
 firebaseAppDistribution {
-    serviceCredentialsFile = "app/serviceCredentialsFile.json"
+    val serviceCredentialsPath: String =
+        System.getenv("SERVICE_CREDENTIALS_PATH")
+            ?: "app/serviceCredentialsFile.json"
+    val releaseNotesPath: String =
+        System.getenv("RELEASE_NOTES_PATH")
+            ?: "app/src/releaseNotes.txt"
+    serviceCredentialsFile = serviceCredentialsPath
     artifactType = "APK"
-    releaseNotesFile = "app/src/releaseNotes.txt"
+    releaseNotesFile = releaseNotesPath
     testers = ""
 }
 
