@@ -32,7 +32,7 @@ android {
                 "proguard-rules.pro"
             )
 
-            firebaseAppDistribution {
+            /*firebaseAppDistribution {
                 val serviceCredentialsPath: String =
                     System.getenv("SERVICE_CREDENTIALS_PATH")
                     ?: "app/serviceCredentialsFile.json"
@@ -42,6 +42,12 @@ android {
                 serviceCredentialsFile = serviceCredentialsPath
                 artifactType = "APK"
                 releaseNotesFile = releaseNotesPath
+                testers = ""
+            }*/
+            firebaseAppDistribution {
+                serviceCredentialsFile = "app/serviceCredentialsFile.json"
+                artifactType = "APK"
+                releaseNotesFile = "app/src/releaseNotes.txt"
                 testers = ""
             }
         }
@@ -69,7 +75,7 @@ android {
     }
 }
 
-firebaseAppDistribution {
+/*firebaseAppDistribution {
     val serviceCredentialsPath: String =
         System.getenv("SERVICE_CREDENTIALS_PATH")
             ?: "app/serviceCredentialsFile.json"
@@ -79,6 +85,12 @@ firebaseAppDistribution {
     serviceCredentialsFile = serviceCredentialsPath
     artifactType = "APK"
     releaseNotesFile = releaseNotesPath
+    testers = ""
+}*/
+firebaseAppDistribution {
+    serviceCredentialsFile = "app/serviceCredentialsFile.json"
+    artifactType = "APK"
+    releaseNotesFile = "app/src/releaseNotes.txt"
     testers = ""
 }
 
