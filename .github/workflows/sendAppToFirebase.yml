@@ -19,11 +19,16 @@ jobs:
       - uses: actions/setup-java@v1
         with: { java-version: 1.17 }
       - name: Build and sent app to fb
+        env:
+          CREDENTIAL_FILE_CONTENT: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
         run: |
-          echo "$CREDENTIAL_FILE_CONTENT" > ./app/serviceCredentialsFile.json
-          echo "App type: Debug" >> ./app/src/releaseNotes.txt
-          echo "buildNumber=${GITHUB_RUN_NUMBER}" >> ./app/src/releaseNotes.txt
-          ls /home/runner/work/Test/Test/app/serviceCredentialsFile.json
+          export SERVICE_CREDENTIALS_PATH="$(pwd)/app/serviceCredentialsFile.json"
+          export RELEASE_NOTES_PATH="$(pwd)/app/src/releaseNotes.txt"
+          echo "$CREDENTIAL_FILE_CONTENT" > $SERVICE_CREDENTIALS_PATH
+          echo "App type: Debug" >> $RELEASE_NOTES_PATH
+          echo "buildNumber=${GITHUB_RUN_NUMBER}" >> $RELEASE_NOTES_PATH
+          wc $SERVICE_CREDENTIALS_PATH
+          wc $RELEASE_NOTES_PATH
           ./gradlew assembleRelease appDistributionUploadRelease
 
       - name: Check status
