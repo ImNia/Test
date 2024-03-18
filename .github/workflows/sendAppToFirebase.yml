@@ -22,13 +22,9 @@ jobs:
         env:
           CREDENTIAL_FILE_CONTENT: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
         run: |
-          export SERVICE_CREDENTIALS_PATH="$(pwd)/app/serviceCredentialsFile.json"
-          export RELEASE_NOTES_PATH="$(pwd)/app/src/releaseNotes.txt"
-          echo "$CREDENTIAL_FILE_CONTENT" > $SERVICE_CREDENTIALS_PATH
-          echo "App type: Debug" >> $RELEASE_NOTES_PATH
-          echo "buildNumber=${GITHUB_RUN_NUMBER}" >> $RELEASE_NOTES_PATH
-          wc $SERVICE_CREDENTIALS_PATH
-          wc $RELEASE_NOTES_PATH
+          echo "$CREDENTIAL_FILE_CONTENT" > ./app/serviceCredentialsFile.json
+          echo "App type: Debug" >> ./app/src/releaseNotes.txt
+          echo "buildNumber=${GITHUB_RUN_NUMBER}" >> ./app/src/releaseNotes.txt
           ./gradlew assembleRelease appDistributionUploadRelease
 
       - name: Check status
