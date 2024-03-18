@@ -20,7 +20,6 @@ jobs:
         with: { java-version: 1.17 }
       - name: Build and sent app to fb
         run: | 
-          echo "$CREDENTIAL_FILE_CONTENT" >> ./app/serviceCredentialsFile.json
           echo "App type: Debug" >> ./app/src/releaseNotes.txt
           echo "buildNumber=${GITHUB_RUN_NUMBER}" >> ./app/src/releaseNotes.txt
           ./gradlew assembleRelease appDistributionUploadRelease
