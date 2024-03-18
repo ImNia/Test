@@ -31,6 +31,13 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            firebaseAppDistribution {
+                serviceCredentialsFile = "app/serviceCredentialsFile.json"
+                artifactType = "APK"
+                releaseNotesFile = "app/src/releaseNotes.txt"
+                testers = ""
+            }
         }
 
         getByName("debug") {
@@ -57,9 +64,9 @@ android {
 }
 
 firebaseAppDistribution {
-    serviceCredentialsFile = "./app/serviceCredentialsFile.json"
+    serviceCredentialsFile = "app/serviceCredentialsFile.json"
     artifactType = "APK"
-    releaseNotesFile = "./app/src/releaseNotes.txt"
+    releaseNotesFile = "app/src/releaseNotes.txt"
     testers = ""
 }
 
